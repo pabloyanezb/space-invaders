@@ -31,7 +31,13 @@ var nave = {
     x:18,
     y:23
 }
-// var disparo = [];
+const key = {
+    right : false,
+    left : false,
+    space : false
+}
+var disparo = [];
+var colision = [];
 
 function displayWorld(){
     var output = '';
@@ -47,6 +53,9 @@ function displayWorld(){
             if(world[i][j] == '1'){
                 output += "\n\t<div class='invader'></div>";
             }
+            // if(world[i][j] == 'o'){
+            //     output += "\n\t<div class='misil'></div>";
+            // }
         }
             output += "\n</div>";
     }
@@ -77,60 +86,110 @@ displayWorld();
 displayNave();
 displayScore();
 
-document.onkeydown = function(e){
-    if(e.keyCode == 37 && world[nave.y][nave.x-1] != 'X'){
+var cooldown = false;
+function updatePlayer(){
+    if (key.left && world[nave.y][nave.x-1] != 'X'){
        nave.x -= 1;
     }
-    else if(e.keyCode == 39 && world[nave.y][nave.x+1] != 'X'){
+    else if (key.right  && world[nave.y][nave.x+1] != 'X'){
        nave.x += 1;
     }
-    else if(e.keyCode == 32){
-       crearDisparo();
+    else if (cooldown == false && key.space){
+        crearDisparo();
+        cooldown = true;
+        setTimeout(() => cooldown = false, 400);
     }
-
-    
-    
+   
     displayNave();
+}
+function update(){
+    updatePlayer();
+   
+    window.requestAnimationFrame(update);
+      
+}
+function onKeyDown(e){
+    if (e.keyCode === 37){
+        key.left = true;
+    }
+    else if (e.keyCode === 39){
+        key.right = true;
+    }
+    else if (e.keyCode === 32){
+        key.space = true;
+    }
+}
+function onKeyUp(e){
+    if (e.keyCode === 37){
+        key.left = false;
+    }
+    else if (e.keyCode === 39){
+        key.right = false;
+    }
+    else if (e.keyCode === 32){
+        key.space = false;
+    }
 }
 
 function crearDisparo(){
-    var world = document.getElementById('world');
+    disparo.push({
+        x: nave.x,
+    });
+    
+    var mundo = document.getElementById('misiles');
     var misil = document.createElement("div");
     misil.className = "misil";
-    world.appendChild(misil);
-   
+    mundo.appendChild(misil);
+    
     //Posiciona al misil sobre la nave (su misma posición x al momento de disparar)
-    misilX = (nave.x*20)-370;
-    misil.style.transform = `translate(${misilX}px)`;
+    
     //Mueve los misiles hacia arriba
+    var misilX = (disparo[disparo.length-1].x);
+    misil.style.transform = `translate(${misilX*20}px)`;
+    
     setInterval(function(){
+        
         var misilY = misil.offsetTop;
-        misil.style.top = (misilY - 5 ) + 'px';
-        detectarColision(misil,misilY,misilX);
+        misil.style.top = (misilY - 20 ) + 'px';
+       
+            
     //Elimina los misiles que salen de la pantalla (cuando su posición top es menor a cero)
     
         if ( misilY < 0 ){
-            world.removeChild(misil);
+            mundo.removeChild(misil);
+            }
+        else if (misilY > 0 && world[Math.floor(misilY/20)][disparo[disparo.length-1].x] == '1'){
+                colision.push({
+                    x: misilX,
+                    y: misilY/20
+                });
+                console.log(colision);
+                detectarColision(misil,misilY,misilX);
+                
             };
+            
         }, 10);
         disparar();
 }
 function detectarColision(misil,misilY,misilX){
+    var mundo = document.getElementById('misiles');
     if(misilY/20 < 0 ){
         return;
+    } 
+    for (var i = 0; i < colision.length; i++){
+        if (world[colision[i].y][colision[i].x] == '1'){
+            world[colision[i].y][colision[i].x] = '0';
+            explosion();
+            score = score + 10;
+            displayWorld();
+            displayScore();
+            mundo.removeChild(mundo.lastChild)
+        }
     }
-    var posicion = world[Math.floor(misilY/20)][Math.floor((misilX/20)+19)] 
-    if( posicion == '1'){
-        world[Math.floor(misilY/20)][Math.floor((misilX/20)+19)] = '0';
-        explosion();
-        // world.removeChild(misil);
-        score = score + 10;
-        displayWorld();
-        displayScore(); 
-    }        
-        
+     
 }
-
-
+window.addEventListener("keydown",onKeyDown);
+window.addEventListener("keyup",onKeyUp);
+window.requestAnimationFrame(update);
         
            
