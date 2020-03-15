@@ -1,35 +1,26 @@
-var world =[
-    ['X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
-    ['X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'],
-    ];
+
+var invasores = [
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','X'],
+    ['X','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','X'],
+    ['X','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','X'],
+    ['X','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','X'],
+    ['X','0','0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
+    ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X']
+];
+
 var score = 0;
 var nave = {
-    x:18,
-    y:23
+    x:10,
+    y:13
 }
 const key = {
     right : false,
@@ -39,33 +30,40 @@ const key = {
 var disparo = [];
 var colision = [];
 
-function displayWorld(){
+
+function displayInvasores(){
     var output = '';
-    for (var i=0; i<world.length; i++){
+    for (var i=0; i<invasores.length; i++){
         output += "\n<div class='row'>"
-        for (var j=0; j<world[i].length; j++){
-            if(world[i][j] == 'X'){
+        for (var j=0; j<invasores[i].length; j++){
+            if(invasores[i][j] == 'X'){
                 output += "\n\t<div class='brick'></div>";
             }
-            if(world[i][j] == '0'){
+            if(invasores[i][j] == '0'){
                 output += "\n\t<div class='empty'></div>";
             }
-            if(world[i][j] == '1'){
+            if(invasores[i][j] == '1'){
                 output += "\n\t<div class='invader'></div>";
             }
-            // if(world[i][j] == 'o'){
-            //     output += "\n\t<div class='misil'></div>";
-            // }
         }
             output += "\n</div>";
     }
-    // console.log(output);
-    document.getElementById('world').innerHTML = output;
+    document.getElementById('invaders').innerHTML = output;
 }
+setInterval(function(){
+    var row1 = document.getElementsByClassName('row')[0];
+    var ultimoRow = document.getElementsByClassName('row')[invasores.length-1];
+    var mundo = document.getElementById('invaders');
+    invasores.unshift(invasores.pop())
+    mundo.insertBefore(ultimoRow, row1);
+    }, 5000);
+
+
 function disparar(){
     var disparar = document.createElement('audio');
     disparar.setAttribute('src', 'sonido/shoot.wav');
     disparar.play();
+    
 };
 function explosion(){
     var explosion = document.createElement('audio');
@@ -75,23 +73,23 @@ function explosion(){
       
 
 function displayNave(){
-    document.getElementById('nave').style.top = nave.y*20+"px"
-    document.getElementById('nave').style.left = nave.x*20+"px"
+    document.getElementById('nave').style.top = nave.y*35+"px"
+    document.getElementById('nave').style.left = nave.x*35+"px"
 }
 function displayScore(){
     document.getElementById('score').innerHTML = score;
 }
 
-displayWorld();
+displayInvasores();
 displayNave();
 displayScore();
 
 var cooldown = false;
 function updatePlayer(){
-    if (key.left && world[nave.y][nave.x-1] != 'X'){
+    if (key.left && invasores[nave.y][nave.x-1] != 'X'){
        nave.x -= 1;
     }
-    else if (key.right  && world[nave.y][nave.x+1] != 'X'){
+    else if (key.right  && invasores[nave.y][nave.x+1] != 'X'){
        nave.x += 1;
     }
     else if (cooldown == false && key.space){
@@ -133,7 +131,7 @@ function onKeyUp(e){
 
 function crearDisparo(){
     disparo.push({
-        x: nave.x,
+        x: nave.x
     });
     
     var mundo = document.getElementById('misiles');
@@ -144,46 +142,50 @@ function crearDisparo(){
     //Posiciona al misil sobre la nave (su misma posición x al momento de disparar)
     
     //Mueve los misiles hacia arriba
-    var misilX = (disparo[disparo.length-1].x);
-    misil.style.transform = `translate(${misilX*20}px)`;
+    var misilX = (disparo[disparo.length-1].x+0.2);
+    misil.style.transform = `translate(${misilX*35}px)`;
     
     setInterval(function(){
         
         var misilY = misil.offsetTop;
-        misil.style.top = (misilY - 20 ) + 'px';
-       
-            
-    //Elimina los misiles que salen de la pantalla (cuando su posición top es menor a cero)
-    
+        misil.style.top = (misilY - 35 ) + 'px';
+        
+        //Elimina los misiles que salen de la pantalla (cuando su posición top es menor 1 cero)
+        
         if ( misilY < 0 ){
             mundo.removeChild(misil);
-            }
-        else if (misilY > 0 && world[Math.floor(misilY/20)][disparo[disparo.length-1].x] == '1'){
-                colision.push({
-                    x: misilX,
-                    y: misilY/20
-                });
-                console.log(colision);
-                detectarColision(misil,misilY,misilX);
-                
-            };
-            
+        }
+        else if (misilY > 0 && invasores[Math.floor(misilY/35)][Math.floor(disparo[disparo.length-1].x)] == '1'){
+            colision.push({
+                x: Math.floor(misilX),
+                y: Math.floor(misilY/35)
+            });
+            console.log(colision);
+            detectarColision(misil,misilY,misilX);
+            colision.pop();
+        };
+        
         }, 10);
         disparar();
 }
 function detectarColision(misil,misilY,misilX){
-    var mundo = document.getElementById('misiles');
-    if(misilY/20 < 0 ){
+    var misiles = document.getElementById('misiles');
+    var misil = document.getElementsByClassName('misil')[0];
+    if(misilY/35 < 0 ){
         return;
     } 
     for (var i = 0; i < colision.length; i++){
-        if (world[colision[i].y][colision[i].x] == '1'){
-            world[colision[i].y][colision[i].x] = '0';
+        if (invasores[colision[i].y][colision[i].x] == '1'){
+            invasores[colision[i].y][colision[i].x] = '0';
+            if (misiles.childElementCount > 0){
+                misil.remove();
+            }
+            displayInvasores();
             explosion();
             score = score + 10;
-            displayWorld();
+            
             displayScore();
-            mundo.removeChild(mundo.lastChild)
+    
         }
     }
      
