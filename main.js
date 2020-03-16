@@ -16,7 +16,7 @@ var invasores = [
     ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X'],
     ['X','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','0','X']
 ];
-
+var vidas = 5;
 var score = 0;
 var nave = {
     x:10,
@@ -50,39 +50,7 @@ function displayInvasores(){
     }
     document.getElementById('invaders').innerHTML = output;
 }
-setInterval(function(){
-    var row1 = document.getElementsByClassName('row')[0];
-    var ultimoRow = document.getElementsByClassName('row')[invasores.length-1];
-    var mundo = document.getElementById('invaders');
-    invasores.unshift(invasores.pop())
-    mundo.insertBefore(ultimoRow, row1);
-    }, 5000);
 
-
-function disparar(){
-    var disparar = document.createElement('audio');
-    disparar.setAttribute('src', 'sonido/shoot.wav');
-    disparar.play();
-    
-};
-function explosion(){
-    var explosion = document.createElement('audio');
-    explosion.setAttribute('src', 'sonido/explosion.wav');
-    explosion.play();
-};
-      
-
-function displayNave(){
-    document.getElementById('nave').style.top = nave.y*35+"px"
-    document.getElementById('nave').style.left = nave.x*35+"px"
-}
-function displayScore(){
-    document.getElementById('score').innerHTML = score;
-}
-
-displayInvasores();
-displayNave();
-displayScore();
 
 var cooldown = false;
 function updatePlayer(){
@@ -99,6 +67,7 @@ function updatePlayer(){
     }
    
     displayNave();
+    ganar();
 }
 function update(){
     updatePlayer();
@@ -126,6 +95,85 @@ function onKeyUp(e){
     }
     else if (e.keyCode === 32){
         key.space = false;
+    }
+}
+
+setInterval(function(){
+    var row1 = document.getElementsByClassName('row')[0];
+    var ultimoRow = document.getElementsByClassName('row')[invasores.length-1];
+    var mundo = document.getElementById('invaders');
+    invasores.unshift(invasores.pop())
+    mundo.insertBefore(ultimoRow, row1);
+    perderVidas();
+    }, 5000);
+
+
+function disparar(){
+    var disparar = document.createElement('audio');
+    disparar.setAttribute('src', 'sonido/shoot.wav');
+    disparar.play();
+    
+};
+function explosion(){
+    var explosion = document.createElement('audio');
+    explosion.setAttribute('src', 'sonido/explosion.wav');
+    explosion.play();
+};
+      
+
+function displayNave(){
+    document.getElementById('nave').style.top = nave.y*35+"px"
+    document.getElementById('nave').style.left = nave.x*35+"px"
+}
+function displayScore(){
+    document.getElementById('score').innerHTML = score;
+}
+function displayVidas(){
+    document.getElementById('vidas').innerHTML = vidas;
+}
+
+displayInvasores();
+displayNave();
+displayScore();
+
+function perderVidas(){
+    for ( var i = 0; i <= 21 ; i++){
+        
+        if ( invasores[invasores.length-1][i] == '1' ){
+           
+            invasores[invasores.length-1][i] = '0';
+            displayInvasores();
+            vidas = vidas - 1;
+            displayVidas();
+            gameOver();
+        }
+    }
+}
+function gameOver(){
+    if ( vidas <= 0 ){
+        var container = document.getElementById('container');
+        var gameOver = document.createElement('div');
+        gameOver.className = 'game-over';
+        gameOver.innerHTML = 'GAME OVER';
+        container.appendChild(gameOver);
+        var restart = document.createElement('a');
+        restart.className = 'restart';
+        restart.innerHTML = 'RESTART?';
+        restart.setAttribute('href', '');
+        container.appendChild(restart);
+        
+        vidas = 0;
+        
+    }
+}
+function ganar(){
+    if ( vidas <= 0){
+        return;
+    }
+    var container = document.getElementById('container');
+    var hasChild = container.querySelector(".invader");
+    if ( hasChild == null ){
+        alert('YOU WIN!, your score:  '+ score)
     }
 }
 
@@ -160,7 +208,6 @@ function crearDisparo(){
                 x: Math.floor(misilX),
                 y: Math.floor(misilY/35)
             });
-            console.log(colision);
             detectarColision(misil,misilY,misilX);
             colision.pop();
         };
