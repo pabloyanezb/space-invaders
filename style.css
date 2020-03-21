@@ -3,174 +3,158 @@
     font-size: 0;
 }
 body{
-    background-color: black;
-}
-#container{
-    position: relative;
+    width: 100%;
+    background: url('img/space.png');
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-attachment: scroll;
     margin: 0 auto;
 }
 
-#misiles{
+div#container{
+    position: relative;
+    text-align: center;
+}
+
+div#misiles{
     height: 520px;
     width: 740px;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    margin: auto;
+    left:0;
+    right: 0;
 }
-div.misil{
-    position: absolute;
-    top: 440px;    
-    width: 20px;
-    height: 20px;
-    background: url('img/misil.png');
-    background-size: contain;
-    z-index: 10;
-}
-#invaders .empty{
-    border: 1px solid transparent;
-    width: 33px;
-    height: 33px;
-}
-#invaders .invader{
-    width: 35px;
-    height: 35px;
-    border: 0;
-    background: url('img/celeste.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#invaders .brick{
-    border: 1px solid transparent;
-    width: 33px;
-    height: 33px;
-}
+        div#nave{
+            background: url('img/nave-min.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 20px;
+            height: 20px;
+            margin: 7.4px;
+            position: absolute;
+        }
+        div.misil{
+            position: absolute;
+            top: 440px;    
+            width: 20px;
+            height: 20px;
+            background: url('img/misil.png');
+            background-size: contain;
+            z-index: 10;
+        }
 
-div.row div{
-    width: 16px;
-    height:16px;
-    display: inline-block;
-    border-radius: 4px;
-}
-div.brick{
-    z-index: 10000;
-}
-#invaders{
+div#invaders{
     outline: 1px solid transparent;
     position: absolute;
     height: 525px;
     width: 735px;
-    top: 0px;
-    left: 0px;
-    background: url('img/space.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0 auto;
+    position: absolute;
+    margin: auto;
+    left:0;
+    right: 0;
 }
+        #invaders .empty{
+            border: 1px solid transparent;
+            width: 33px;
+            height: 33px;
+        }
+        #invaders .invader{
+            width: 35px;
+            height: 35px;
+            border: 0;
+            background: url('img/celeste.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #invaders .brick{
+            border: 1px solid transparent;
+            width: 33px;
+            height: 33px;
+        }
 
-div.invader{
-    /* background: url('img/celeste.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; */
-    border: 2px solid transparent;
+        #invaders .row div{
+            display: inline-block;
+        }
+      
+div#vidas{
+    font-family: 'Orbitron', sans-serif;
+    font-size: medium;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    position: relative;
+    float: left;
 }
-div.empty{
-    border: 2px solid transparent;
-}
-
-div#nave{
-    background: url('img/nave-min.png');
+div#vida{
+    background: url('img/vida.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 20px;
-    height: 20px;
-    margin: 7.4px;
-    position: absolute;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
 }
 div#score{
     font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 30px;
+    width: 164px;
     height: 30px;
     font-size: medium;
     color: white;
     padding: 6px;
     text-align: center;
     position: relative;
-    display: inline-block;
-    top: 0px;
-    left:670px;
+    float: right;
 }
-div#vidas{
+div#pts, div#puntaje{
     font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 30px;
-    height: 30px;
-    font-size: medium;
-    color: white;
-    padding: 6px;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    top: 20px;
-    left: -75px;
-}
-div#vida{
-    font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 30px;
-    height: 30px;
     font-size: small;
     color: white;
     padding: 6px;
-    text-align: center;
     position: relative;
-    display: inline-block;
-    top: 0;
-    left: -11px;
-}
-div#pts{
-    font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 30px;
-    height: 30px;
-    font-size: small;
-    color: white;
-    padding: 6px;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    top: 20px;
-    left: 629px;
+    display: inline; 
 }
 div.game-over{
     font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 100px;
-    height: 50px;
+    width: 130px;
     font-size: xx-large;
     color: white;
-    padding: 6px;
-    text-align: center;
-    position: absolute;
-    display: inline-block;
-    left: 300px;
+    position: relative;
     top: 150px;
+    margin: 0 auto;
+}
+div.victory{
+    font-family: 'Orbitron', sans-serif;
+    width: 170px;
+    font-size: xx-large;
+    color: cyan;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 150px;
+    margin: 0 auto;
 }
 a.restart{
     text-decoration: none;
     font-family: 'Orbitron', sans-serif;
-    border: 0px solid white;
-    width: 100px;
-    height: 50px;
+    width: 130px;
     font-size: large;
     color: greenyellow;
-    padding: 6px;
     text-align: center;
-    position: absolute;
-    display: inline-block;
-    left: 300px;
-    top: 242px;
+    position: relative;
+    display: block;
+    top: 168px;
+    margin: 0 auto;
+}
+div.your-score{
+    font-family: 'Orbitron', sans-serif;
+    width: 110px;
+    font-size: large;
+    color: white;
+    text-align: center;
+    position: relative;
+    display: block;
+    top: 160px;
+    margin: 0 auto;
 }
